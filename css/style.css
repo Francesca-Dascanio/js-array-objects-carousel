@@ -22,6 +22,27 @@ main #container {
     background-color: red;
 }
 
+.slide {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.position-title {
+    position: absolute;
+    right: 10px;
+    top: 60%;
+    color: white;
+    font-weight: bold;
+}
+
+.position-description {
+    position: absolute;
+    right: 10px;
+    top: 70%;
+    color: white;
+}
+
 main #container #arrow-previous{
     background-color: white;
     position: absolute;
@@ -57,3 +78,4 @@ main #container #arrow-next {
 .hidden {
     display: none;
 }
+
