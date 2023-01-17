@@ -7,7 +7,13 @@ OK
 
 Milestone 1:
 Ora rimuoviamo i contenuti statici e usiamo l'array di oggetti letterali per popolare dinamicamente il carosello.
-Al click dell'utente sulle frecce verso sinistra o destra, l'immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo.
+OK
+Al click dell'utente sulle frecce verso sinistra o destra, l'immagine attiva diventerà visibile 
+OK
+
+e dovremo aggiungervi titolo e testo.
+OK
+
 
 Milestone 2:
 Aggiungere il ciclo infinito del carosello. Ovvero se l'immagine attiva è la prima e l'utente clicca la freccia verso destra, l'immagine che deve attivarsi sarà l'ultima e viceversa per l'ultima immagine se l'utente clicca la freccia verso sinistra.
@@ -61,6 +67,7 @@ let slide;
 // Inserisci in div container le 5 slide create
 const container = document.getElementById('container');
 
+
 for (i = 0; i < arrayContent.length; i++) {
 
     slide = document.createElement('div');
@@ -71,9 +78,61 @@ for (i = 0; i < arrayContent.length; i++) {
     slide.innerHTML += arrayContent[i].descrizione;
     // console.log(slide);
 
+
     container.append(slide);
 
     
 }
 
+
 console.log(container);
+
+// Così prende tutti i div con classe slide --> si crea un array
+const slides = document.querySelectorAll('.slide');
+console.log(slides);
+
+let currentSlide = 0;
+
+slides[currentSlide].classList.add('current');
+
+// Prendi da HTML le frecce
+const previous = document.getElementById('arrow-previous');
+
+const next = document.getElementById('arrow-next');
+
+// All'evento click avanti....
+next.addEventListener ('click',
+
+    function() {
+
+    // Deve aggiungere alla slide la classe .current
+
+    slides[currentSlide].classList.remove('current');
+
+    currentSlide = currentSlide + 1;
+
+    slides[currentSlide].classList.add('current');
+
+
+    }
+
+)
+
+// All'evento click indietro...
+
+previous.addEventListener ('click',
+
+    function() {
+
+    // Deve aggiungere alla slide la classe .current
+
+    slides[currentSlide].classList.remove('current');
+
+    currentSlide = currentSlide - 1;
+
+    slides[currentSlide].classList.add('current');
+
+
+    }
+
+)
