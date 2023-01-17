@@ -16,11 +16,12 @@ OK
 
 
 Milestone 2:
-Aggiungere il ciclo infinito del carosello. Ovvero se l'immagine attiva è la prima e l'utente clicca la freccia verso destra, l'immagine che deve attivarsi sarà l'ultima e viceversa per l'ultima immagine se l'utente clicca la freccia verso sinistra.
+Aggiungere il ciclo infinito del carosello. 
+Ovvero se l'immagine attiva è la prima e l'utente clicca la freccia verso destra, l'immagine che deve attivarsi sarà l'ultima e viceversa per l'ultima immagine se l'utente clicca la freccia verso sinistra.
 
 */
 
-
+// MILESTONE 0
 // Creo array di 5 oggetti
 const arrayContent = [
     {
@@ -84,13 +85,15 @@ for (i = 0; i < arrayContent.length; i++) {
     
 }
 
-
 console.log(container);
 
+
+// MILESTONE 1
 // Così prende tutti i div con classe slide --> si crea un array
 const slides = document.querySelectorAll('.slide');
 console.log(slides);
 
+// Crea un identificativo per la slide corrente che si può incrementare o decrementare
 let currentSlide = 0;
 
 slides[currentSlide].classList.add('current');
@@ -105,16 +108,26 @@ next.addEventListener ('click',
 
     function() {
 
-    // Deve aggiungere alla slide la classe .current
+        // Deve aggiungere alla slide la classe .current
 
-    slides[currentSlide].classList.remove('current');
-
-    currentSlide = currentSlide + 1;
-
-    slides[currentSlide].classList.add('current');
+        slides[currentSlide].classList.remove('current');
 
 
-    }
+        // Controllo: se sono all'ultima slide, torna a prima slide
+        if (currentSlide == slides.length - 1) {
+
+            currentSlide = 0;
+            
+        }
+        // Altrimenti procedi alla slide successiva
+        else {
+            currentSlide = currentSlide + 1;
+        }
+
+        slides[currentSlide].classList.add('current');
+   
+
+     }
 
 )
 
@@ -128,7 +141,16 @@ previous.addEventListener ('click',
 
     slides[currentSlide].classList.remove('current');
 
-    currentSlide = currentSlide - 1;
+    // Controllo: se sono all'ultima slide, torna a prima slide
+    if (currentSlide == 0) {
+
+        currentSlide = slides.length - 1;
+        
+    }
+    // Altrimenti procedi alla slide successiva
+    else {
+        currentSlide = currentSlide - 1;
+    }
 
     slides[currentSlide].classList.add('current');
 
